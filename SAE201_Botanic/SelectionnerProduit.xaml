@@ -1,0 +1,132 @@
+﻿<Window
+    x:Class="SAE201_Botanic.SelectionnerProduit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SAE201_Botanic"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Valider la commande"
+    Width="650"
+    Height="500"
+    Icon="rsc/icon_botanic.ico"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Grid Margin="50,40">
+        <Button x:Name="toutSelectionner"
+            Width="120"
+            Height="30"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="White"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            Content="Tout sélectionner"
+            Cursor="Hand"
+            Foreground="Gray" Click="toutSelectionner_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Button.Resources>
+        </Button>
+        <DataGrid
+            Name="dataGrid"
+            Height="300"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            AutoGenerateColumns="False"
+            Background="White"
+            CanUserAddRows="False"
+            FontSize="16"
+            Foreground="Black"
+            IsReadOnly="True"
+            ItemsSource="{Binding LesProduits}">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding NumProduit}"
+                    Header="Numéro" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding NomProduit}"
+                    Header="Produit" />
+                <DataGridTemplateColumn Width="*" Header="Quantity">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox
+                                    x:Name="txtQuantite"
+                                    Grid.Column="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Text="{Binding Quantite}" />
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*" Header="Selectionner">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}">
+                                <CheckBox.Template>
+                                    <ControlTemplate TargetType="CheckBox">
+                                        <Grid Width="20" Height="20">
+                                            <Border
+                                                x:Name="border"
+                                                Background="White"
+                                                BorderBrush="#4CAF50"
+                                                BorderThickness="1"
+                                                CornerRadius="3" />
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsChecked" Value="True">
+                                                <Setter TargetName="border" Property="Background" Value="#4CAF50" />
+                                                <Setter Property="Content" Value="✔" />
+                                            </Trigger>
+                                            <Trigger Property="IsChecked" Value="False">
+                                                <Setter TargetName="border" Property="Background" Value="Red " />
+                                                <Setter Property="Content" Value="🕒" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </CheckBox.Template>
+                            </CheckBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button
+            x:Name="butEnvoyerAssoc"
+            Width="70"
+            Height="30"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Background="#FF1C9E7F"
+            BorderThickness="0"
+            Click="butEnvoyerAssoc_Click"
+            Content="Envoyer"
+            Cursor="Hand"
+            Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,63 @@
+﻿<Window
+    x:Class="SAE201_Botanic.FicheCommande"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SAE201_Botanic"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Fiche commande"
+    Width="700"
+    Height="800"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Label
+            HorizontalAlignment="Center"
+            HorizontalContentAlignment="Right"
+            Content="Tous les champs sont obligatoires"
+            FontSize="12"
+            Foreground="Gray" />
+        <Label
+            HorizontalAlignment="Center"
+            Content="Enregistrer ou modifier une commande"
+            FontSize="26"
+            FontWeight="Bold"
+            Foreground="#FF1C9E7F" Margin="0,30,0,0" />
+        <StackPanel>
+            <local:PannelCommande
+            x:Name="UCPannelCommande"
+            Grid.Column="1"
+            VerticalAlignment="Top"
+            DataContext="{Binding SelectedItem, ElementName=dgCommandes}" />
+            <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                x:Name="butAnnuler"
+                Width="200"
+                VerticalAlignment="Top"
+                Click="butAnnuler_Click"
+                Content="Annuler"
+                IsCancel="True" Margin="0,0,10,0" Height="30" Foreground="White" Background="#FFE88585" BorderBrush="#FF8A5252" FontSize="14" FontWeight="Bold" />
+            <Button
+                x:Name="butValider"
+                Width="200"
+                VerticalAlignment="Top"
+                Click="butValider_Click"
+                Content="Valider"
+                IsDefault="True" Margin="10,0,0,0" Height="30" Background="#FF1C9E7F" Foreground="White" BorderBrush="#FF176150" FontSize="14" FontWeight="Bold" />
+        </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

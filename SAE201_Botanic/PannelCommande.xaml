@@ -1,0 +1,74 @@
+﻿<UserControl
+    x:Class="SAE201_Botanic.PannelCommande"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SAE201_Botanic"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="650"
+    d:DesignWidth="600"
+    mc:Ignorable="d">
+    <StackPanel
+        x:Name="mainPanel"
+        Grid.Column="1"
+        Margin="80,80,80,80">
+        <Label
+            Margin="0,15,0,0"
+            Content="Numéro du magasin"
+            FontSize="20"
+            FontWeight="Bold" />
+        <ComboBox
+            x:Name="cbNumeroMagasin"
+            ItemsSource="{Binding NumMagasin}"
+            SelectedIndex="0"
+            Margin="0,0,0,10"
+            FontSize="16" >
+            <ComboBoxItem Content="1" IsSelected="True" />
+            <ComboBoxItem Content="2" />
+            <ComboBoxItem Content="3" />
+            <ComboBoxItem Content="4" />
+            <ComboBoxItem Content="5" />
+            <ComboBoxItem Content="6" />
+        </ComboBox>
+        <Label
+            Margin="0,15,0,0"
+            Content="Mode de transport"
+            FontSize="20"
+            FontWeight="Bold" />
+        <ComboBox
+            x:Name="cbModeTransport"
+            Margin="0,0,0,10"
+            ItemsSource="{Binding ModeTransport}"
+            FontSize="16">
+            <ComboBoxItem Content="UPS" />
+            <ComboBoxItem Content="Chronopost" />
+            <ComboBoxItem Content="Botanic" IsSelected="True" />
+            <ComboBoxItem Content="Relais" />
+        </ComboBox>
+        <Label
+            Margin="0,15,0,0"
+            Content="Date de commande"
+            FontSize="20"
+            FontWeight="Bold" />
+        <DatePicker x:Name="dpDatCommande" FontSize="16" />
+        <Label
+            Margin="0,15,0,0"
+            Content="Date de livraison"
+            FontSize="20"
+            FontWeight="Bold" />
+        <DatePicker x:Name="dpDateLivraison" FontSize="16" IsEnabled="False"/>
+        <Label
+            Margin="0,15,0,0"
+            Content="Mode de livraison"
+            FontSize="20"
+            FontWeight="Bold" />
+        <TextBox x:Name="cbModeLivraison" FontSize="16" />
+
+        <!--<Label
+            Margin="0,15,0,0"
+            Content="Numéro du produit"
+            FontSize="20"
+            FontWeight="Bold" />
+        <TextBox x:Name="txtNumProduit" FontSize="16" />-->
+    </StackPanel>
+</UserControl>
