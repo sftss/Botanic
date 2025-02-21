@@ -6,6 +6,6 @@ Designed to simplify the purchasing workflow, Botanic enhances operational effic
 Among its key features, Botanic provides streamlined order creation with customizable filtering options, making it easy for users to locate and manage products efficiently.
 
 ## Authors
-* **H. Lucas** - [Lucopecto](https://github.com/lucopecto)
+* **H. Lucas** - [Luco](https://github.com/lucas-hatet)
 * **T. Sefer** - [Sefer](https://github.com/sftss)
 * **T. Feyza** - [Feyy7435](https://github.com/feyy7435)
